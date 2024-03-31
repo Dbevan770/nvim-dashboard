@@ -14,8 +14,8 @@ end
 
 function M.open_dashboard()
 	-- Stored global options
-	local global_number = vim.api.nvim_get_option("number")
-	local global_relativenumber = vim.api.nvim_get_option("relativenumber")
+	local global_number = vim.api.nvim_win_get_option(0, "number")
+	local global_relativenumber = vim.api.nvim_win_get_option(0, "relativenumber")
 
 	-- Clear the buffer and set some basic content
 	vim.api.nvim_buf_set_lines(0, 0, -1, false, { "Welcome to my Dashboard", "More features coming soon!" })
@@ -35,8 +35,8 @@ function M.open_dashboard()
 	vim.api.nvim_create_autocmd("BufLeave", {
 		buffer = 0,
 		callback = function()
-			vim.api.nvim_set_option("number", global_number)
-			vim.api.nvim_set_option("relativenumber", global_relativenumber)
+			vim.api.nvim_win_set_option(0, "number", global_number)
+			vim.api.nvim_win_set_option(0, "relativenumber", global_relativenumber)
 		end,
 	})
 end
