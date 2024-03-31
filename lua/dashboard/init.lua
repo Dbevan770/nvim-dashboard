@@ -15,12 +15,15 @@ end
 function M.open_dashboard()
 	-- Clear the buffer and set some basic content
 	vim.api.nvim_buf_set_lines(0, 0, -1, false, { "Welcome to my Dashboard", "More features coming soon!" })
+
+	-- Set window options
+	vim.api.nvim_win_set_option(0, "number", false)
+	vim.api.nvim_win_set_option(0, "relativenumber", false)
+
 	-- Set buffer options to make it look like a Dashboard
 	vim.api.nvim_buf_set_option(0, "buftype", "nofile")
 	vim.api.nvim_buf_set_option(0, "bufhidden", "hide")
-	vim.api.nvim_buf_set_option(0, "number", false)
 	vim.api.nvim_buf_set_option(0, "readonly", true)
-	vim.api.nvim_buf_set_option(0, "relativenumber", false)
 	vim.api.nvim_buf_set_option(0, "swapfile", false)
 end
 
